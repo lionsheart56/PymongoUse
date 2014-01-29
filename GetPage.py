@@ -33,4 +33,4 @@ class GetPage:
     def show_page (self):
         print self.contents
     def return_data (self):
-    	return self.contents
+        return self.contents

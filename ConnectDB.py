@@ -37,19 +37,23 @@ from pymongo import MongoClient
 class ConnectDB:
 
 	def choosedb(self,dbname):
+	    
 	    client = MongoClient()
 	    self.db = client[dbname]
 	
 	# connecting to mongodb and choose a database, if not exits, create one by itself
 	
 	def chooseCollection(self,coname):
+	    
 	    self.table=self.db[coname]
 
 	def insertRec(self,record):	
+	    
 	    post_id=self.table.insert(record)
 	    return post_id
 	
 	# insert record to database and return it's id
 	
 	def findAll(self):
+	    
 	    return self.table.find()

@@ -24,13 +24,18 @@ import pycurl
 
 class GetPage:
     def __init__ (self, url):
+        
         self.contents = ''
         self.url = url
 
     def read_page (self, buf):
+        
         self.contents = self.contents + buf
 
     def show_page (self):
+        
         print self.contents
+    
     def return_data (self):
+        
         return self.contents

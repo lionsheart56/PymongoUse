@@ -39,8 +39,7 @@ class ParseData:
 		self.data = etree.parse(StringIO(inputData),self.parser)
 
 	def removeTag(self,tagName):
-
-        tag = '//' + tagName
+		tag = '//' + tagName
 
 		for s in self.data.xpath(tag):
 			s.getparent().remove(s)

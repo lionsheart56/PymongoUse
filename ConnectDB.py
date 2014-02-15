@@ -58,11 +58,21 @@ class ConnectDB:
 	    
 	    return self.table.find()
 
-	def findGT(self,field,cmp):
+	def findGT(self,field,cmp,mode):
 	#  find the record which "field" is greater than cmp value
+	#  mode 1 for greater than ro equal to , others for only greater than
 
-	    return self.table.find({field:{"$gte":cmp}})
+	    if mode == 1:
+	        return self.table.find({field:{"$gte":cmp}})
+	    else 
+	        return self.table.find({field:{"$gt":cmp}})
 
 	def findLT(self,field,cmp):
+	#  find the record which "field" is less than cmp value
+	#  mode 1 for less than or equal to , others for only less than
 
-	    return self.table.find({field:{"$lte":cmp}})
+	    if mode == 1:
+	        return self.table.find({field:{"$lte":cmp}})
+	    else 
+	        return self.table.find({field:{"$lt":cmp}})
+	        

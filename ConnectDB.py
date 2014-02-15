@@ -64,7 +64,7 @@ class ConnectDB:
 
 	    if mode == 1:
 	        return self.table.find({field:{"$gte":cmp}})
-	    else 
+	    else: 
 	        return self.table.find({field:{"$gt":cmp}})
 
 	def findLT(self,field,cmp):
@@ -73,6 +73,9 @@ class ConnectDB:
 
 	    if mode == 1:
 	        return self.table.find({field:{"$lte":cmp}})
-	    else 
+	    else:
 	        return self.table.find({field:{"$lt":cmp}})
-	        
+
+	def delByID(self,id):
+
+		return self.table.remove({"_id":{"$in":[id]}})

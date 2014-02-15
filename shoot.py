@@ -55,19 +55,33 @@ else:
 
 #ins_id = instance.insertRec(post)
 
+AllRec = instance.findAll()
 
+for a in AllRec:
+	print a
+
+
+print '\n'
+
+
+test = instance.table.find({"Diff":{"$in":[18]}})
+
+#print test
+for a in test:
+    ids = a["_id"]
+instance.delByID(ids)
 #test = instance.findGT("Diff",40)
 
 #test=instance.table.find({"Diff":{"$gte":40}})
 #for a in test:
-	#print a
+#	print a
 
 #print '\n'
 
-#AllRec = instance.findAll()
+AllRec = instance.findAll()
 
-#for a in AllRec:
-	#print a
+for a in AllRec:
+	print a
 
 
 

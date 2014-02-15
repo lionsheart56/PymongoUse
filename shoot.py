@@ -1,6 +1,6 @@
 # save fetch record to database
 # format:
-#     url    -    time     -   count   
+#     url    -    time     -   size    -   diff 
 
 import pycurl
 import pymongo
@@ -53,12 +53,21 @@ else:
 	post = {"Url":url,"Size":size,
 			"Time":time,"Diff":diff}
 
-ins_id = instance.insertRec(post)
+#ins_id = instance.insertRec(post)
 
-AllRec = instance.findAll()
 
-for a in AllRec:
-	print a
+#test = instance.findGT("Diff",40)
+
+#test=instance.table.find({"Diff":{"$gte":40}})
+#for a in test:
+	#print a
+
+#print '\n'
+
+#AllRec = instance.findAll()
+
+#for a in AllRec:
+	#print a
 
 
 

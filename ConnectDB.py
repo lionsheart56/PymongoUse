@@ -57,3 +57,12 @@ class ConnectDB:
 	def findAll(self):
 	    
 	    return self.table.find()
+
+	def findGT(self,field,cmp):
+	#  find the record which "field" is greater than cmp value
+
+		return self.table.find({field:{"$gte":cmp}})
+
+	def findLT(self,field,cmp):
+
+		return self.table.find({field:{"$gte":cmp}})

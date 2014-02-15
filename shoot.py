@@ -1,22 +1,27 @@
 # save fetch record to database
 # format:
 #     url    -    time     -   size    -   diff 
+# Usage :
+# 		  python shoot.py dbName collectionName Url
+#
 
 import pycurl
 import pymongo
 import time
+import sys
 from ParseData import ParseData
 from GetPage import GetPage
 from ConnectDB import ConnectDB
 from time import gmtime, strftime
 
 
+
 instance = ConnectDB()
-instance.choosedb("Fetch")
-instance.chooseCollection("YouTube")
+instance.choosedb(sys.argv[1])
+instance.chooseCollection(sys.argv[2])
 
 
-url = "http://www.youtube.com"
+url = sys.argv[3]
 
 mypage = GetPage(url)
 curlconnect = pycurl.Curl()
@@ -53,30 +58,16 @@ else:
 	post = {"Url":url,"Size":size,
 			"Time":time,"Diff":diff}
 
-#ins_id = instance.insertRec(post)
+ins_id = instance.insertRec(post)
 
-AllRec = instance.findAll()
+#test = instance.table.find({"Diff":{"$in":[18]}})
 
-for a in AllRec:
-	print a
-
-
-print '\n'
-
-
-test = instance.table.find({"Diff":{"$in":[18]}})
-
-#print test
-for a in test:
-    ids = a["_id"]
-instance.delByID(ids)
 #test = instance.findGT("Diff",40)
 
 #test=instance.table.find({"Diff":{"$gte":40}})
 #for a in test:
 #	print a
 
-#print '\n'
 
 AllRec = instance.findAll()
 
